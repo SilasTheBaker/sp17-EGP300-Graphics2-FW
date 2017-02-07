@@ -36,12 +36,30 @@
     <ClCompile Include="egpfwDemoFreeglut\egpDemoFreeglutMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\include\egpfw\Matrix3x3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\egpfw\Matrix4x4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\egpfw\Vector3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\egpfwDemo\egpfwDemo.h">
       <Filter>Source Files\egpfwDemo</Filter>
     </ClInclude>
     <ClInclude Include="egpfwDemoFreeglut\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\egpfw\Matrix3x3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\egpfw\Matrix4x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\egpfw\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
