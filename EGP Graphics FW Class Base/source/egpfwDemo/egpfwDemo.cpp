@@ -893,6 +893,7 @@ void renderGameState()
 		// draw shaded earth
 		{
 			currentProgramIndex = phongProgramIndex;
+			//currentProgramIndex = testTextureProgramIndex; //change back
 			currentProgram = glslPrograms + currentProgramIndex;
 			currentUniformSet = glslCommonUniforms[currentProgramIndex];
 			egpActivateProgram(currentProgram);

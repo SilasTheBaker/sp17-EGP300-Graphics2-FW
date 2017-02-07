@@ -56,9 +56,9 @@ void main()
 	// ****
 	// optional step: pass data along to next stage in pipeline
 	// this example: copy inbound color attribute directly to outbound varying
-	//data.color = color; //write the color out
-	vec4 mappedNormals = normal / 2 + 0.5; 
-	data.color = mappedNormals;
+	data.color = color; //write the color out
+	//vec4 mappedNormals = normal / 2 + 0.5; 
+	//data.color = mappedNormals;
 	//data.color = texcoord;
 
 }
