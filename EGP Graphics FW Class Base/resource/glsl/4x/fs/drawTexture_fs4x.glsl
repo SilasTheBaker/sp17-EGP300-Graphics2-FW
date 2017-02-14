@@ -35,4 +35,14 @@ void main()
 	// ****
 	// output: this example: sample texture, copy to target
 	fragColor = texture(tex_dm, data.texcoord);
+	//fragColor.r = 0; //make it blue
+
+	/*  ------------- Black and white --------------------
+
+	float colorVerage = (fragColor.r + fragColor.g + fragColor.b) / 3;
+
+	fragColor.r = colorVerage;
+	fragColor.g = colorVerage;
+	fragColor.b = colorVerage;
+	*/
 }

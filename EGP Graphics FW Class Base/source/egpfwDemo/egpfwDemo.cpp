@@ -891,7 +891,7 @@ void renderGameState()
 
 
 
-//-----------------------------------------------------------------------------
+//----------------
 
 	// draw scene off-screen
 	egpfwActivateFBO(fbo + sceneFBO);
