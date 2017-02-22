@@ -362,8 +362,8 @@ void setupGeometry()
 	egpTriOBJDescriptor obj[1];
 
 	// low-res sphere
-	*obj = egpfwLoadBinaryOBJ("sphere8x6_bin.txt");
-	if (!obj->data)
+	//*obj = egpfwLoadBinaryOBJ("sphere8x6_bin.txt");
+	//if (!obj->data)
 	{
 		*obj = egpfwLoadTriangleOBJ("../../../../resource/obj/sphere8x6.obj", NORMAL_LOAD, 1.0);
 		egpfwSaveBinaryOBJ(obj, "sphere8x6_bin.txt");
@@ -372,8 +372,8 @@ void setupGeometry()
 	egpfwReleaseOBJ(obj);
 
 	// high-res sphere
-	*obj = egpfwLoadBinaryOBJ("sphere32x24_bin.txt");
-	if (!obj->data)
+	//*obj = egpfwLoadBinaryOBJ("sphere32x24_bin.txt");
+	//if (!obj->data)
 	{
 		*obj = egpfwLoadTriangleOBJ("../../../../resource/obj/sphere32x24.obj", NORMAL_LOAD, 1.0);
 		egpfwSaveBinaryOBJ(obj, "sphere32x24_bin.txt");
