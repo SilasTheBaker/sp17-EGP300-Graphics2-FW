@@ -42,7 +42,59 @@ extern "C"
 
 #ifndef __cplusplus
 	typedef struct egpTriOBJDescriptor egpTriOBJDescriptor;
+	typedef struct egpFace egpFace;
 #endif	// __cplusplus
+
+	// helper structures
+	union float2
+	{
+		struct { float f0, f1; };
+		float f[2];
+	};
+	union float3
+	{
+		struct { float f0, f1, f2; };
+		float f[3];
+	};
+	union float4
+	{
+		struct { float f0, f1, f2, f3; };
+		float f[4];
+	};
+	union int4
+	{
+		struct { int i0, i1, i2, i3; };
+		int i[4];
+	};
+	union face
+	{
+		struct { unsigned int v0, v1, v2, vt0, vt1, vt2, vn0, vn1, vn2; };
+		struct { unsigned int v[3], vt[3], vn[3]; };
+	};
+
+	struct uniqueTriFace;
+	struct uniqueVertex;
+	struct uniqueTexcoord;
+	struct uniqueNormal;
+
+#ifndef __cplusplus
+	typedef union float2			float2;
+	typedef union float3			float3;
+	typedef union float4			float4;
+	typedef union int4				int4;
+	typedef union face				face;
+	typedef struct uniqueTriFace	uniqueTriFace;
+	typedef struct uniqueVertex		uniqueVertex;
+	typedef struct uniqueTexcoord	uniqueTexcoord;
+	typedef struct uniqueNormal		uniqueNormal;
+#endif	// __cplusplus
+
+	struct egpFace
+	{
+		unsigned int vertexIndicies[3];
+		unsigned int texcoordIndicies[3];
+		unsigned int normalIndicies[3];
+	};
 
 	// trianglulated OBJ descriptor
 	// NOTE: this is a SHARED RESOURCE; do not load the same OBJ multiple times
@@ -53,6 +105,14 @@ extern "C"
 		unsigned int attribOffset[16];
 		unsigned int dataSize;
 		void *data;
+		unsigned int numVerticies;
+		float3* vertices;
+		unsigned int numTexcoords;
+		float2* texcoords;
+		unsigned int numNormals;
+		float3* normals;
+		unsigned int numFaces;
+		egpFace* faces;
 	};
 
 
