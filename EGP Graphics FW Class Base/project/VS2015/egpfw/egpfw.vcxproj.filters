@@ -22,6 +22,12 @@
     <Filter Include="Source Files\cpp">
       <UniqueIdentifier>{008ef152-8bb8-41d3-8c26-b1c4a33eeaee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\HomeWorks">
+      <UniqueIdentifier>{d7a86ded-9161-4103-a051-f146569ccdca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cpp\Homeworks">
+      <UniqueIdentifier>{f8f4a189-b10f-4548-98af-729bbbd38c41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\egpfw\egpfw.h">
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\egpfw\egpfw\egpfwFrameBuffer.h">
       <Filter>Header Files\egpfw</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Header Files\HomeWorks</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

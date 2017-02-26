@@ -412,7 +412,7 @@ egpTriOBJDescriptor egpfwLoadBinaryOBJ(const char *binPath)
 		fread(&obj.normals[i].f1, sizeof(float), 1, binFile);
 		fread(&obj.normals[i].f2, sizeof(float), 1, binFile);
 	}
-	fwrite(&obj.numFaces, sizeof(unsigned int), 1, binFile);
+	fread(&obj.numFaces, sizeof(unsigned int), 1, binFile);
 	for (int i = 0; i < obj.numFaces; i++)
 	{
 		fread(&obj.faces[i].vertexIndicies, sizeof(unsigned int), 3, binFile);
