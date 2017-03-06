@@ -51,6 +51,12 @@
     <ClInclude Include="Stack.h">
       <Filter>Header Files\HomeWorks</Filter>
     </ClInclude>
+    <ClInclude Include="Quaternion.h">
+      <Filter>Header Files\HomeWorks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\egpfw\Vector3.h">
+      <Filter>Header Files\HomeWorks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\egpfw\egpfwPrimitiveDataSimple.c">
@@ -67,6 +73,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\egpfw\egpfwFrameBuffer.c">
       <Filter>Source Files\c</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source Files\cpp\Homeworks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\egpfw\Vector3.cpp">
+      <Filter>Header Files\HomeWorks</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,36 +1,38 @@
-#ifndef VECTOR_3_H
-#define VECTOR_3_H
+#pragma once
+
 
 #include <GL/glew.h>
 
-#ifdef __cplusplus
-extern "C"
+class Vector3
 {
-#endif // __cplusplus
+public:
+	Vector3();
+	Vector3(float newX, float newY, float newZ);
+	~Vector3();
+	static float dot(const Vector3& left, const Vector3& right);
+	static Vector3 crossProduct(const Vector3& left, const Vector3& right);
+	static Vector3 lerp(const Vector3& start, const Vector3& end, float t);
+	static Vector3 subtractVector3(const Vector3& left, const Vector3& right);
+	static Vector3 addVector3(const Vector3& left, const Vector3& right);
+	static Vector3 multiplyVector3(const Vector3& vec, float scaler);
+	static Vector3 convertArrayToVector3(const GLfloat* arr);
+
+	float magnitude() const;
+	float sqrMagnitude() const;
+	Vector3 multiply(float scaler) const;
+	void convertVector3ToArray(GLfloat* arr) const;
+	Vector3 normalize() const;
 
 
-	struct Vector3
-	{
-		GLfloat x,
-				y,
-				z;
-	};
+	//Operators
+	Vector3 operator*(float scaler) const;
+	Vector3 operator+(const Vector3& rhs) const;
+	Vector3& operator*=(const float& scaler);
 
-	void assignVector3(float x, float y, float z, struct Vector3* vec);
-	struct Vector3 addVector3(const struct Vector3* left, const struct Vector3* right);
-	struct Vector3 subtractVector3(const struct Vector3* left, const struct Vector3* right);
-	struct Vector3 multiplyVector3(GLfloat scaler, const struct Vector3* vec);
-	struct Vector3 lerp(const struct Vector3* start, const struct Vector3* end, float t);
-	GLfloat magnitude(const struct Vector3* vec);
-	GLfloat sqrMagnitude(const struct Vector3* vec);
-	GLfloat dotProduct(const struct Vector3* left, const struct Vector3* right);
-	struct Vector3 crossProduct(const struct Vector3* left, const struct Vector3* right);
-	void convertVector3ToArray(const struct Vector3* vec, GLfloat* arr);
-	struct Vector3 convertArrayToVector3(const GLfloat* arr);
+	//These should probably be private but getters would be annoying
+	float x,
+		  y,
+		  z;
 
-
-#ifdef __cplusplus
-}
-#endif // __cplusplus
-
-#endif
+private:
+};

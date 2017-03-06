@@ -310,14 +310,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\include\egpfw\Matrix3x3.c" />
     <ClCompile Include="..\..\..\include\egpfw\Matrix4x4.c" />
-    <ClCompile Include="..\..\..\include\egpfw\Vector3.c" />
     <ClCompile Include="..\..\..\source\egpfwDemo\egpfwDemo.cpp" />
     <ClCompile Include="egpfwDemoFreeglut\egpDemoFreeglutMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\egpfw\Matrix3x3.h" />
     <ClInclude Include="..\..\..\include\egpfw\Matrix4x4.h" />
-    <ClInclude Include="..\..\..\include\egpfw\Vector3.h" />
     <ClInclude Include="..\..\..\source\egpfwDemo\egpfwDemo.h" />
     <ClInclude Include="egpfwDemoFreeglut\resource.h" />
   </ItemGroup>
