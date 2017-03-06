@@ -24,6 +24,7 @@ uniform sampler2D img_light_diffuse;
 uniform sampler2D img_light_specular;
 
 
+// ****
 // target
 layout (location = 0) out vec4 fragColor;
 

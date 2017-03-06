@@ -29,8 +29,11 @@ uniform vec4 lightColor[NUM_LIGHTS];
 uniform vec4 lightPos[NUM_LIGHTS];
 uniform vec4 eyePos;
 
+
+// ****
 // target
 layout (location = 0) out vec4 fragColor;
+
 
 float calculateAttenuation(float distSq, float maxDistSq)
 {
@@ -48,13 +51,11 @@ float evaluateLight(int i, in vec4 position, out vec4 lightVec, out vec4 lightCo
 	return calculateAttenuation(distSq, maxDistSq);
 }
 
-
 vec4 phong(float atten, in vec4 N, in vec4 L, in vec4 V, in vec4 lightColor, in vec4 diffuseColor, in vec4 specularColor)
 {
 	float kd = dot(N, L);
 
-	vec4 R = (kd + kd)*N - L;
-
+	vec4 R = (kd+kd)*N - L;
 	float ks = dot(V, R);
 
 	kd = max(0.0, kd);
@@ -68,9 +69,13 @@ vec4 phong(float atten, in vec4 N, in vec4 L, in vec4 V, in vec4 lightColor, in 
 	return (kd*diffuseColor + ks*specularColor)*lightColor*atten;
 }
 
+
 // shader function
 void main()
 {
+	// ****
+	// output: calculate lighting for each light by reading in 
+	//	attribute data from g-buffers
 	vec4 position = texture(img_position, passTexcoord);
 	vec4 normal = normalize(texture(img_normal, passTexcoord));
 	vec4 texcoord = texture(img_texcoord, passTexcoord);
@@ -84,7 +89,7 @@ void main()
 
 	atten = evaluateLight(0, position, lightVec, lightCol);
 	lighting += phong(atten, normal, lightVec, eyeVec, lightCol, diffuseSample, specularSample);
-
+	
 	atten = evaluateLight(1, position, lightVec, lightCol);
 	lighting += phong(atten, normal, lightVec, eyeVec, lightCol, diffuseSample, specularSample);
 
