@@ -8,7 +8,10 @@
 //  O - and ZYX, 
 //	X - make identity, 
 //	X - concatenate, 
-//	X - multiply 3D vector, //	O - spherical linear interpolation(SLERP), //	X - convert to 3D matrix.
+//	X - multiply 3D vector, 
+//	O - spherical linear interpolation(SLERP), 
+//	X - convert to 3D matrix.
+
 
 #pragma once
 #include <egpfw/Vector3.h>

@@ -1,3 +1,4 @@
+#pragma once
 
 /*
 Implement a 4D (4x4) homogeneous transformation structure in C with
@@ -8,37 +9,34 @@ scale and/or translation, inverse, concatenate, multiply 3D vector.
 */
 
 
-#ifndef MATRIX_4_X_4_H
-#define MATRIX_4_X_4_H
 
 #include <GL/glew.h>
-#include "Matrix3x3.h"
 
+struct Matrix3x3;
+class Vector3;
 
-#ifdef __cplusplus
-extern "C"
+class Matrix4x4
 {
-#endif // __cplusplus
+public:
+	Matrix4x4();
+	~Matrix4x4();
+	static Matrix4x4 makeTransformFromRotation(const Matrix3x3* rotationMatix);
+	static Matrix4x4 uniformScaleMatrix4x4(GLfloat scale);
+	static Matrix4x4 identityMatrix4X4();
+	static void zeroOutMatrix4x4(Matrix4x4 &matrix);
+	static Matrix4x4 concatenateMatrix4X4(const Matrix4x4* left, const Matrix4x4* right);
+	static Matrix4x4 makeTransform(const Vector3* translation);
+	static Matrix4x4 makeTransform(const Vector3* translation, const struct Matrix3x3* rotationMatrix);
+	static Vector3 matrix4X4TimesVector3(const Matrix4x4 &transform, const Vector3 &vec);
 
-	struct Matrix4x4
-	{
-		GLfloat elements[4][4];
-	};
+	Matrix4x4 inverse();
+	Matrix3x3 getRotationMatrix();
+	Vector3 Matrix4x4::getVector3();
 
-	struct Matrix4x4 makeTransformFromRotation(const struct Matrix3x3* rotationMatix);
-	struct Matrix4x4 makeTransformFromVector3(const struct Vector3* translation);
-	struct Matrix3x3 concatenateMatrix4X4(const struct Matrix4x4* left, const struct Matrix4x4* right);
-	struct Matrix4x4 makeTransformFromTransformAndVector3(const struct Vector3* translation, const struct Matrix3x3* rotationMatrix);
-	struct Matrix4x4 uniformScaleMatrix4x4(GLfloat scale);
-	struct Matrix4x4 inverseMatrix4x4(const struct Matrix4x4* transform);
-	struct Matrix4x4 identityMatrix4X4();
-	struct Matrix3x3 getRotationFrom4x4(const struct Matrix4x4* transform);
-	struct Vector3 getVector3From4x4(const struct Matrix4x4* transform);
-	void zeroOutMatrix4x4(struct Matrix4x4* matrix);
+	//These should be private buut getters would get pretty annoying
+	// in some of my other code I may overload this later
+	GLfloat elements[4][4];
+private:
 
+};
 
-#ifdef __cplusplus
-}
-#endif // __cplusplus
-
-#endif //MATRIX_4_X_4_H
