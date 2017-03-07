@@ -14,8 +14,8 @@
 
 
 #pragma once
-#include <egpfw/Vector3.h>
-#include <egpfw/Matrix4x4.h>
+class Vector3;
+class Matrix4x4;
 
 class Quaternion
 {
