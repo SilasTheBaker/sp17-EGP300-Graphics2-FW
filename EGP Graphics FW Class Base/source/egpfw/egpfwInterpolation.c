@@ -11,32 +11,47 @@
 float egpfwLerp(const float v0, const float v1, const float param)
 {
 	//...
-	return 0.0f;
+	return v0 + (v1 - v0) * param;
 }
 
 // ****
 float egpfwLerpInv(const float v0, const float v1, const float v)
 {
 	//...
-	return 0.0f;
+	return egpfwLerp(v0, v1, 1 - v);
 }
 
 
 // ****
 // Catmull-Rom spline interpolation
-float egpfwCatmullRom(const float vPrev, const float v0, const float v1, const float vNext, const float param)
+float egpfwCatmullRom(const float pPrev, const float p0, const float p1, const float pNext, const float t)
 {
-	//...
-	return 0.0f;
+	float t2 = t * t;
+	float t3 = t * t * t;
+
+	float first = -t + 2 * t2 - t3;
+	float second = 2 - 5 * t2 + 3 * t3;
+	float third = t + 4 * t2 - 3 * t3;
+	float fourth = -t2 + t3;
+
+	return 0.5f * (pPrev * first + p0 * second + p1 * third + pNext * fourth);
 }
 
 
 // ****
 // Cubic hermite spline interpolation
-float egpfwCubicHermite(const float v0, const float dv0, const float v1, const float dv1, const float param)
+float egpfwCubicHermite(const float v0, const float dv0, const float v1, const float dv1, const float t)
 {
 	//...
-	return 0.0f;
+	float t2 = t * t;
+	float t3 = t * t * t;
+
+	float first = 1 - 3 * t2 + 2 * t3;
+	float second = t - 2 * t2 + t3;
+	float third = 3 * t2 - 2 * t3;
+	float fourth = -t2 + t3;
+
+	return first * v0 + second * dv0 + third * v1 + fourth * dv1;
 }
 
 
@@ -51,28 +66,40 @@ float egpfwBezier0(const float v0, const float param)
 float egpfwBezier1(const float v0, const float v1, const float param)
 {
 	//...
-	return 0.0f;
+	return egpfwLerp(v0, v1, param);
 }
 
 // ****
-float egpfwBezier2(const float v0, const float v1, const float v2, const float param)
+float egpfwBezier2(const float v0, const float v1, const float v2, const float t)
 {
 	//...
-	return 0.0f;
+	float lerp1 = egpfwLerp(v0, v1, t);
+	float lerp2 = egpfwLerp(v1, v2, t);
+
+	return egpfwLerp(lerp1, lerp2, t);
 }
 
 // ****
-float egpfwBezier3(const float v0, const float v1, const float v2, const float v3, const float param)
+float egpfwBezier3(const float v0, const float v1, const float v2, const float v3, const float t)
 {
 	//...
-	return 0.0f;
+	float lerp1 = egpfwLerp(v0, v1, t);
+	float lerp2 = egpfwLerp(v1, v2, t);
+	float lerp3 = egpfwLerp(v2, v3, t);
+
+	return egpfwLerp(egpfwLerp(lerp1, lerp2, t), egpfwLerp(lerp2, lerp3, t), t);
 }
 
 // ****
-float egpfwBezier4(const float v0, const float v1, const float v2, const float v3, const float v4, const float param)
+float egpfwBezier4(const float v0, const float v1, const float v2, const float v3, const float v4, const float t)
 {
 	//...
-	return 0.0f;
+	float lerp1 = egpfwLerp(v0, v1, t);
+	float lerp2 = egpfwLerp(v1, v2, t);
+	float lerp3 = egpfwLerp(v2, v3, t);
+	float lerp4 = egpfwLerp(v3, v4, t);
+
+	return egpfwBezier3(lerp1, lerp2, lerp3, lerp4, t);
 }
 
 // ****
