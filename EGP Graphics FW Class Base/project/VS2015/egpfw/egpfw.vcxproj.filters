@@ -60,6 +60,9 @@
     <ClInclude Include="..\..\..\include\egpfw\Matrix4x4.h">
       <Filter>Header Files\HomeWorks</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\egpfw\Matrix3x3.h">
+      <Filter>Header Files\HomeWorks</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\egpfw\egpfwPrimitiveDataSimple.c">
@@ -84,6 +87,9 @@
       <Filter>Source Files\cpp\Homeworks</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\include\egpfw\Matrix4x4.cpp">
+      <Filter>Source Files\cpp\Homeworks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\egpfw\Matrix3x3.cpp">
       <Filter>Source Files\cpp\Homeworks</Filter>
     </ClCompile>
   </ItemGroup>

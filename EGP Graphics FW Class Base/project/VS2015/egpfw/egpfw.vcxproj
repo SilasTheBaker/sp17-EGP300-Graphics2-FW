@@ -25,12 +25,14 @@
     <ClInclude Include="..\..\..\include\egpfw\egpfw\egpfwPrimitiveDataSimple.h" />
     <ClInclude Include="..\..\..\include\egpfw\egpfw\egpfwShaderProgram.h" />
     <ClInclude Include="..\..\..\include\egpfw\egpfw\egpfwVertexBuffer.h" />
+    <ClInclude Include="..\..\..\include\egpfw\Matrix3x3.h" />
     <ClInclude Include="..\..\..\include\egpfw\Matrix4x4.h" />
     <ClInclude Include="..\..\..\include\egpfw\Vector3.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\include\egpfw\Matrix3x3.cpp" />
     <ClCompile Include="..\..\..\include\egpfw\Matrix4x4.cpp" />
     <ClCompile Include="..\..\..\include\egpfw\Vector3.cpp" />
     <ClCompile Include="..\..\..\source\egpfw\egpfwFrameBuffer.c" />

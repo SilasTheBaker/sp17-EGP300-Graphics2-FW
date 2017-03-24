@@ -17,18 +17,22 @@ uniform scale, make identity, concatenate, multiply 3D vector.
 
 #include <GL/glew.h>
 
-#ifdef __cplusplus
-extern "C"
+class Matrix3x3
 {
-#endif // __cplusplus
+public:
+	Matrix3x3();
+	~Matrix3x3();
 
-	struct Matrix3x3
-	{
-		GLfloat elements[3][3];
-	};
+	//Should pe private but getters/setters would be annoying
+	GLfloat elements[3][3];
 
-	struct Matrix3x3 transposeMatrix3x3(const struct Matrix3x3* matrix);
-	struct Matrix3x3 inverseMatrix3x3(const struct Matrix3x3* matrix);
+	Matrix3x3 getTranspose();
+	Matrix3x3 inverseMatrix3x3();
+private:
+
+};
+
+
 	struct Matrix3x3 xRotationMatrix3x3(const GLfloat xRot);
 	struct Matrix3x3 yRotationMatrix3x3(const GLfloat yRot);
 	struct Matrix3x3 zRotationMatrix3x3(const GLfloat zRot);
@@ -43,8 +47,5 @@ extern "C"
 	void copyMatrix(struct Matrix3x3* dest, const struct Matrix3x3* source);
 	void zeroOutMatrix3x3(struct Matrix3x3* matrix);
 
-#ifdef __cplusplus
-}
-#endif // __cplusplus
 
 #endif //MATRIX_3_X_3_H

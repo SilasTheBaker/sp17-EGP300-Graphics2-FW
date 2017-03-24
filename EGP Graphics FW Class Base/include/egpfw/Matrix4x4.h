@@ -33,8 +33,8 @@ public:
 	Matrix3x3 getRotationMatrix();
 	Vector3 Matrix4x4::getVector3();
 
-	These should be private buut getters would get pretty annoying
-	 in some of my other code I may overload this later
+	//These should be private buut getters would get pretty annoying
+	// in some of my other code I may overload this later
 	GLfloat elements[4][4];
 private:
 

@@ -24,12 +24,12 @@ public:
 	Vector3 normalize() const;
 
 
-	Operators
+	//Operators
 	Vector3 operator*(float scaler) const;
 	Vector3 operator+(const Vector3& rhs) const;
 	Vector3& operator*=(const float& scaler);
 
-	These should probably be private but getters would be annoying
+	//These should probably be private but getters would be annoying
 	float x,
 		  y,
 		  z;
