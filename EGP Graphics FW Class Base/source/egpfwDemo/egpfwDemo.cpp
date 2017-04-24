@@ -129,6 +129,7 @@ enum GLSLProgramIndex
 	testTexturePassthruProgramIndex, 
 
 	phongProgramIndex,
+	blinnPhongProgramIndex,
 
 //-----------------------------
 	GLSLProgramCount
@@ -539,25 +540,56 @@ void setupShaders()
 
 	// lighting
 	{
-		currentProgramIndex = phongProgramIndex;
-		currentProgram = glslPrograms + currentProgramIndex;
+		//phong
+		{
+			currentProgramIndex = phongProgramIndex;
+			currentProgram = glslPrograms + currentProgramIndex;
 
-		files[0] = egpLoadFileContents("../../../../resource/glsl/4x/vs/phong_vs4x.glsl");
-		files[1] = egpLoadFileContents("../../../../resource/glsl/4x/fs/phong_fs4x.glsl");
-		shaders[0] = egpCreateShaderFromSource(EGP_SHADER_VERTEX, files[0].contents);
-		shaders[1] = egpCreateShaderFromSource(EGP_SHADER_FRAGMENT, files[1].contents);
+			files[0] = egpLoadFileContents("../../../../resource/glsl/4x/vs/phong_vs4x.glsl");
+			files[1] = egpLoadFileContents("../../../../resource/glsl/4x/fs/phong_fs4x.glsl");
 
-		*currentProgram = egpCreateProgram();
-		egpAttachShaderToProgram(currentProgram, shaders + 0);
-		egpAttachShaderToProgram(currentProgram, shaders + 1);
-		egpLinkProgram(currentProgram);
-		egpValidateProgram(currentProgram);
+			shaders[0] = egpCreateShaderFromSource(EGP_SHADER_VERTEX, files[0].contents);
+			shaders[1] = egpCreateShaderFromSource(EGP_SHADER_FRAGMENT, files[1].contents);
 
-		egpReleaseShader(shaders + 0);
-		egpReleaseShader(shaders + 1);
-		egpReleaseFileContents(files + 0);
-		egpReleaseFileContents(files + 1);
+			*currentProgram = egpCreateProgram();
+			egpAttachShaderToProgram(currentProgram, shaders + 0);
+			egpAttachShaderToProgram(currentProgram, shaders + 1);
+			egpLinkProgram(currentProgram);
+			egpValidateProgram(currentProgram);
+
+			egpReleaseShader(shaders + 0);
+			egpReleaseShader(shaders + 1);
+			egpReleaseFileContents(files + 0);
+			egpReleaseFileContents(files + 1);
+		}
+
+		//blinn phong
+		{
+			currentProgramIndex = blinnPhongProgramIndex;
+			currentProgram = glslPrograms + currentProgramIndex;
+
+			//files[0] = egpLoadFileContents("../../../../resource/glsl/4x/vs/phong_vs4x.glsl");
+			//files[1] = egpLoadFileContents("../../../../resource/glsl/4x/fs/phong_fs4x.glsl");
+
+			files[0] = egpLoadFileContents("../../../../resource/glsl/4x/vs/blinnphong_vs.glsl");
+			files[1] = egpLoadFileContents("../../../../resource/glsl/4x/fs/blinnphong_fs.glsl");
+
+			shaders[0] = egpCreateShaderFromSource(EGP_SHADER_VERTEX, files[0].contents);
+			shaders[1] = egpCreateShaderFromSource(EGP_SHADER_FRAGMENT, files[1].contents);
+
+			*currentProgram = egpCreateProgram();
+			egpAttachShaderToProgram(currentProgram, shaders + 0);
+			egpAttachShaderToProgram(currentProgram, shaders + 1);
+			egpLinkProgram(currentProgram);
+			egpValidateProgram(currentProgram);
+
+			egpReleaseShader(shaders + 0);
+			egpReleaseShader(shaders + 1);
+			egpReleaseFileContents(files + 0);
+			egpReleaseFileContents(files + 1);
+		}
 	}
+
 
 
 	// configure all uniforms at once
@@ -892,8 +924,10 @@ void renderGameState()
 
 		// draw shaded earth
 		{
-			currentProgramIndex = phongProgramIndex;
+			currentProgramIndex = blinnPhongProgramIndex;
+			//currentProgramIndex = phongProgramIndex;
 			//currentProgramIndex = testTextureProgramIndex; //change back
+		
 			currentProgram = glslPrograms + currentProgramIndex;
 			currentUniformSet = glslCommonUniforms[currentProgramIndex];
 			egpActivateProgram(currentProgram);

@@ -328,9 +328,13 @@
     <Image Include="egpfwDemoFreeglut\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\resource\glsl\4x\fs\assFS.glsl" />
+    <None Include="..\..\..\resource\glsl\4x\fs\blinnphong_fs.glsl" />
     <None Include="..\..\..\resource\glsl\4x\fs\drawColor_fs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\fs\drawTexture_fs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\fs\phong_fs4x.glsl" />
+    <None Include="..\..\..\resource\glsl\4x\vs\assVS.glsl" />
+    <None Include="..\..\..\resource\glsl\4x\vs\blinnphong_vs.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\passColor_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\passTexcoord_passthruPosition_vs4x.glsl" />
     <None Include="..\..\..\resource\glsl\4x\vs\passTexcoord_vs4x.glsl" />

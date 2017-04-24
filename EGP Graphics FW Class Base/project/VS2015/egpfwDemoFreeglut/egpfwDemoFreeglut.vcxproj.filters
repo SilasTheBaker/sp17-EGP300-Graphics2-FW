@@ -95,5 +95,17 @@
     <None Include="..\..\..\resource\glsl\4x\vs\passTexcoord_passthruPosition_vs4x.glsl">
       <Filter>Resource Files\glsl\4x\vs</Filter>
     </None>
+    <None Include="..\..\..\resource\glsl\4x\fs\blinnphong_fs.glsl">
+      <Filter>Resource Files\glsl\4x\fs</Filter>
+    </None>
+    <None Include="..\..\..\resource\glsl\4x\vs\blinnphong_vs.glsl">
+      <Filter>Resource Files\glsl\4x\vs</Filter>
+    </None>
+    <None Include="..\..\..\resource\glsl\4x\fs\assFS.glsl">
+      <Filter>Resource Files\glsl\4x\fs</Filter>
+    </None>
+    <None Include="..\..\..\resource\glsl\4x\vs\assVS.glsl">
+      <Filter>Resource Files\glsl\4x\vs</Filter>
+    </None>
   </ItemGroup>
 </Project>
