@@ -27,15 +27,15 @@ uniform sampler2D tex_sm;
 
 
 //light data
-const vec4 lightAmbientIntensity = vec4(0.3, 0.3, 0.3, 1);
-const vec4 lightDiffuseIntensity  = vec4(1, 1, 1, 1);
-const vec4 lightSpecularIntensity  = vec4(1, 1, 0, 1);
+const vec4 lightAmbientIntensity = vec4(0.4, 0.4, 0.4, 1);
+const vec4 lightDiffuseIntensity  = vec4(.9, .9, .9, 1);
+const vec4 lightSpecularIntensity  = vec4(1, 1, 1, 1);
 
 //material data, play around with this later
 const vec4 ambientReflectance = vec4(1, 1, 1, 1);
 const vec4 diffuseReflectance = vec4(1, 1, 1, 1);
 const vec4 specularReflectance = vec4(1, 1, 1, 1);
-const float shininess = 64;
+const float shininess = 80;
 
 
 // ****
@@ -79,12 +79,46 @@ void main()
 	vec4 diffuseSample = texture(tex_dm, data.texcoord);
 	vec4 specularSample = texture(tex_sm, data.texcoord);
 	specular *= specularSample;
-	fragColor = diffuseSample * clamp((ambient + diffuse + specular), 0, 1);
+	fragColor = diffuseSample * (ambient + diffuse + specular);
 
 
 //	//trying rim lighting with help from http://roxlu.com/2014/037/opengl-rim-shader
 	float rimShadingContribution = 1 - max(dot(data.eyeVec, data.normal), 0.0);
 	
 	fragColor.a = 1; //Do I need to do this?
-	fragColor.rgb += vec3(smoothstep(0.6, 1.0, rimShadingContribution)); 
+	fragColor.rgb += vec3(smoothstep(0.1, 1.0, rimShadingContribution)); 
+
+
+ //****
+	// this example: phong shading algorithm
+
+	//Diffuse Coeficient, need normal and light vector
+	//vec4 N = normalize(data.normal);
+	//vec4 L = normalize(data.lightVec);
+	//float kd = dot(N, L);
+
+	//specular coeficient
+	//need view vector and reflected vector
+	//vec4 V = normalize(data.eyeVec);
+	//vec4 R = (kd + kd)*N - L;
+	//float ks = dot(V, R);
+
+	//calmp both and power specular
+	//kd = max(0.0, kd);
+	//ks = max(0.0, ks);
+	//ks *= ks;
+	//ks *= ks;
+	//ks *= ks;
+	//ks *= ks;
+
+	// ****
+	// output: phong
+	//const vec4 AMB = vec4(0.0, 0.1, 0.2, 1.0);
+	//fragColor = AMB + vec4(kd + ks);
+
+	// ****
+	// extra: apply textures as well
+	//vec4 diffuseSample = texture(tex_dm, data.texcoord);
+	//vec4 specularSample = texture(tex_sm, data.texcoord);
+	//fragColor = AMB + diffuseSample * kd + specularSample * ks;
 }

@@ -35,4 +35,5 @@ void main()
 	// ****
 	// output: this example: sample texture, copy to target
 	fragColor = texture(tex_dm, data.texcoord);
+	//fragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }

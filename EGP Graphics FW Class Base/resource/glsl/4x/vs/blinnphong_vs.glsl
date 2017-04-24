@@ -46,14 +46,4 @@ void main()
 	data.eyeVec = eyePos - position;
 	data.texcoord = texcoord.xy;
 
-	////Blinn phong
-
-	////World Space
-	//vec4 worldPos = mvp * position;
-
-	//data.normal = vec4(normal.xyz, 0.0);
-	//data.lightVec = lightPos - position;
-	//data.eyeVec = eyePos - position;
-	//data.texcoord = texcoord.xy;
-
 }

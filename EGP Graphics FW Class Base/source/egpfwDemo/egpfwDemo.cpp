@@ -887,10 +887,10 @@ void renderGameState()
 
 
 		// activate test program
-		if (testUseTextureProgram)
+		//if (testUseTextureProgram)
 			currentProgramIndex = testTextureProgramIndex;
-		else
-			currentProgramIndex = testColorProgramIndex;
+		//else
+			//currentProgramIndex = testColorProgramIndex;
 		currentProgram = glslPrograms + currentProgramIndex;
 		currentUniformSet = glslCommonUniforms[currentProgramIndex];
 		egpActivateProgram(currentProgram);
