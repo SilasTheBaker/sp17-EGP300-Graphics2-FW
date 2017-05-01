@@ -83,10 +83,10 @@ void main()
 
 
 //	//trying rim lighting with help from http://roxlu.com/2014/037/opengl-rim-shader
-	float rimShadingContribution = 1 - max(dot(data.eyeVec, data.normal), 0.0);
+	float rimShadingContribution = 1 - max(dot(normalize(data.eyeVec), data.normal), 0.0);
 	
 	fragColor.a = 1; //Do I need to do this?
-	fragColor.rgb += vec3(smoothstep(0.1, 1.0, rimShadingContribution)); 
+	fragColor.rgb += vec3(smoothstep(0.7, 1.0, rimShadingContribution)); 
 
 
  //****
